@@ -1,0 +1,86 @@
+# proyecto.githhub.io
+Es un sitio web informativo acerca de servicios contables de la consultora contable Aetos Gamaliel
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 573px;
+      height: 398px;
+      border-radius: 30px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <h2 class="titulo_slider_automatico">BIENVENIDOS A 
+            AETOS GAMALIEL</h2>
+        <h4>Nos complace  darte la
+            bienvenida a nuestro 
+            sitio web.</h4>
+    </div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      autoplay: {
+        delay: 2500, // Retraso entre cada slide en milisegundos (aquí 2.5 segundos)
+        disableOnInteraction: false, // Mantiene el autoplay aunque interactúes con el slider
+      },
+      loop: true, // Para que el slider sea infinito
+    });
+  </script>
+</body>
+
+</html>
