@@ -1,0 +1,148 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.testimonio_titulo {
+  width: 472px;
+  height: 46px; 
+  font-size: 24pt; 
+  background-color: #183660; 
+  color: white; 
+  border: none;
+  border-radius: 30px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin: 150px 0; 
+}
+
+.caja_texto_testimonios {
+  width: 375px; 
+  height: 431px; 
+  background-color: #183660;
+  color: white;
+  border-radius: 30px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 30px; 
+}
+
+.testimonio-container {
+  margin-top: 100px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 100px;
+  gap: 20px; 
+  height: 431;
+}
+.testimonios_titulo{
+  display: flex;
+  justify-content: center;
+  background-color: #183660;
+  color: white;
+}
+
+.home_titulo {
+  width: 472px; 
+  height: 46px;
+  background-color: #183660; 
+  color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin: 50px auto;
+  text-align: center;
+  font-size: 18px;
+}
+.novedades-financieras {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin: 50px 100px;
+}
+
+.novedades-imagen {
+  width: 968px; 
+  height: 511px; 
+  border-radius: 30px; 
+  object-fit: cover; 
+}
+.llamada_a_la_accion{
+  display: flex;
+  justify-content: center;
+  width: 770;
+  height: 85;
+}
+.home_presiona {
+  width: 573px; 
+  height: 86px;
+  background-color: #FBBF19; 
+  color:#183660;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin: 50px auto;
+  text-align: center;
+  font-size: 18px;
+}
+.footer {
+  background-color: #183660; 
+  color: white; 
+  width: 100%; 
+}
+
+.footer-content {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0 100px; 
+}
+
+.footer-dropdowns {
+  display: flex; 
+}
+
+.dropdown {
+  margin-right: 20px; 
+
+.dropdown-toggle {
+  background-color: #FBBF19; 
+  color: #183660; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 30px; 
+  cursor: pointer; 
+}
+
+.dropdown-menu {
+  background-color: #fff; 
+  border-radius: 5px; 
+}
+
+.footer-brand {
+  display: flex; 
+  align-items: center; 
+}
+
+.footer-brand img {
+  width: 100px; 
+}
+
+@media (min-width: 992px) {
+  .footer {
+      height: 246px; 
+  }
+}
+
+@media (max-width: 991px) {
+  .footer {
+      height: 392px; 
+  }
+}
+}
