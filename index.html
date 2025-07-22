@@ -3,315 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header Personalizado con Slider</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./Stylesheet/css/bootstrap.css">
-    <link rel="stylesheet" href="./Stylesheet/css/style.css">
+    <title>Para Ti, Mi Vida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        
-        .navbar {
-            margin: 0; 
+        /* Estilos generales */
+        body {
+            margin: 0;
             padding: 0;
+            background: #faf3f0; /* Beige rosado suave */
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        .container-fluid {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin: 0 100px; 
+        /* Barra lateral (nuevo estilo) */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 80px;
+            background: #e8c4c4; /* Rosa polvoriento */
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
+            z-index: 1;
         }
 
-        .navbar-collapse {
-            display: flex; 
-            justify-content: center; 
+        /* Flores decorativas */
+        .flower {
+            position: absolute;
+            opacity: 0.8;
+            z-index: 0;
+            animation: float 8s infinite ease-in-out;
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+        }
+        .flower-1 {
+            width: 90px;
+            top: 15%;
+            left: 90px;
+            animation-delay: 0s;
+        }
+        .flower-2 {
+            width: 110px;
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 1.5s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
-        .navbar-nav .nav-link {
-            background-color: #183660; 
-            color: white;
-            font-size: 16px;
-            padding: 6px 16px;
-            transition: all 0.3s ease;
-            border-radius: 30px; 
+        /* Sobre redondeado */
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: #f3a8b5; /* Rosa suave */
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            z-index: 10;
+        }
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid #e893a8; /* Rosa más oscuro */
+            transform-origin: top;
+            transform: rotateX(0deg);
+            transition: all 0.5s ease-in-out;
+            z-index: 12;
+            border-radius: 0 0 12px 12px;
+        }
+        .envelope.open:before {
+            transform: rotateX(180deg);
+        }
+        .envelope:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 100px solid #d9889e; /* Rosa base */
+            z-index: 8;
+            border-radius: 12px 12px 0 0;
+        }
+        .envelope:hover {
+            transform: scale(1.05);
         }
 
-        /* Hover para escritorio */
-        .navbar-nav .nav-link:hover {
-            background-color: #FBBF19; 
-            color: #183660; 
+        /* Carta con bordes redondeados */
+        .letter {
+            position: absolute;
+            width: 280px;
+            height: 400px;
+            background: #fff9fb;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            padding: 30px;
+            box-sizing: border-box;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 11;
+            overflow-y: auto;
+            border: 1px solid #f0d6dd;
+        }
+        .letter.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .letter h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #c45e7a;
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 25px;
+        }
+        .letter p {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            text-align: right;
+            margin-top: 30px;
+            color: #c45e7a;
+        }
+        .heart {
+            color: #ff6b8b;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
-        /* Espaciado entre botones en versión PC */
-        @media (min-width: 992px) {
-            .navbar-nav .nav-item + .nav-item {
-                margin-left: 21px; 
+        /* Estrellas brillantes */
+        .glitter {
+            position: absolute;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffd166"><path d="M12 2L9 9l-7 3 5 6-1 7 7-4 7 4-1-7 5-6-7-3z"/></svg>') no-repeat;
+            background-size: contain;
+            opacity: 0;
+            z-index: 5;
+            animation: glitterFall linear forwards;
+        }
+        @keyframes glitterFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.7;
             }
         }
 
-        
-        @media (max-width: 991px) {
-            .navbar-nav .nav-link {
-                display: block;
-                width: 100%;
-                margin-bottom: 3px; 
-                text-align: center;
-                border-radius: 30px; 
-            }
-        }
-
-        /* Estilos del menú hamburguesa */
-        .navbar-toggler {
-            border: none;
-        }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(24, 54, 96, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-        }
-
-        /* Estilos para el slider */
-        .carousel {
-            margin-top: 68px; 
-            flex: 1; 
-            max-width: 573px; 
-        }
-
-        .carousel-item img {
-            width: 100%; 
-            height: 398px; 
-            border-radius: 30px; /
-        }
-
-        /* Estilo para la imagen flotante */
-        .floating-image {
-            width: 300px; 
-            margin-left: 20px; 
-            border-radius: 30px; 
-            margin-top: 68px; 
-        }
-
-        /* Media query para ocultar la imagen flotante en pantallas pequeñas */
-        @media (max-width: 768px) {
-            .floating-image {
-                display: none; 
-            }
-        }
-
-        .TITULO {
-            margin-top: 150px;
-            background-color: #183660;
-            color: white;
-            border-radius: 30px;
-            width: 472px; 
-            height: 46px; 
-        }
-
-        /* Ajustar el contenedor del testimonio */
-        .testimonio_titulo {
-            margin: 50px 100px; 
-            text-align: center; 
+        /* Instrucción */
+        .hint {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #c45e7a;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            z-index: 9;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./img/marca.png" height="148" width="152" alt="Marca">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">INICIO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">SOBRE NOSOTROS</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            SERVICIOS
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">CONTABILIDAD</a></li>
-                            <li><a class="dropdown-item" href="#">CONSULTORA</a></li>
-                            <li><a class="dropdown-item" href="#">OTROS SERVICIOS</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">RECURSOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">NOTICIAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACTOS</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Barra lateral -->
+    <div class="sidebar"></div>
 
-    <div style="overflow: hidden; display: flex; justify-content: center;">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./img/slider pc 1.png" class="d-block" alt="Slide 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/slider pc 2.png" class="d-block" alt="Slide 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/slider pc 3.png" class="d-block" alt="Slide 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="./img/slider pc 4.png" class="d-block" alt="Slide 4">
-                </div>
-            </div>
-        </div>
-        <img src="./img/aguila poderosa.png" alt="Imagen Flotante" class="floating-image"> <!-- Reemplaza con la ruta de tu imagen -->
+    <!-- Flores -->
+    <img src="https://cdn.pixabay.com/photo/2017/01/10/03/06/flower-1968358_640.png" class="flower flower-1">
+    <img src="https://cdn.pixabay.com/photo/2017/01/31/23/42/decorative-2028039_640.png" class="flower flower-2">
 
-    </div>
-    
-    <div class="home_titulo">TESTIMONIOS</div>
+    <!-- Sobre -->
+    <div class="envelope" id="envelope"></div>
+    <p class="hint">Abre el sobre 💖</p>
 
-    <div class="testimonio-container"> <!-- Añade una clase para el contenedor -->
-        <div>
-            <img src="./img/testimonios video.png" width="573" height="431" alt="">
-        </div>
-        <div class="caja_texto_testimonios" >
-            <h4>Conoce los testimonios de nuestros clientes y su experiencia con nuestros servicios.</h4>
-        </div>
+    <!-- Carta con tu mensaje -->
+    <div class="letter" id="letter">
+        <h1>Para la dueña de mi corazón</h1>
+        <p>Mi vida, mi pilar fundamental:</p>
+        <p>Desde que llegaste a mi vida, todo cobró un sentido nuevo. Eres esa persona que, con solo existir, hace que valga la pena cada amanecer, cada lucha y cada sueño. No solo eres mi compañera, sino mi refugio, mi motivación y la razón por la que creo en el amor verdadero.</p>
+        <p>Contigo aprendí que el amor no se mide en grandiosos gestos, sino en los detalles pequeños: en tu mirada que me entiende sin palabras, en tu apoyo incondicional que me hace fuerte, y en ese amor que das sin pedir nada a cambio.</p>
+        <p>No hay un solo día que no agradezca el haberte encontrado. Porque contigo, el "para siempre" suena a promesa cumplida.</p>
+        <div class="signature">Te amo <span class="heart">♥</span></div>
     </div>
 
-    <div class="home_titulo">ULTIMAS NOTICIAS</div>
-    
-    
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner d-flex">
-            <div class="carousel-item active">
-                <div class="d-flex justify-content-center gap-21">
-                    <img src="./img/noticias 1.png" class="carousel-image" alt="Slide 1">
-                    <img src="./img/noticias 2.png" class="carousel-image" alt="Slide 2">
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="d-flex justify-content-center gap-21">
-                    <img src="./img/noticias 3.png" class="carousel-image" alt="Slide 3">
-                    <img src="./img/noticias 4.png" class="carousel-image" alt="Slide 4">
-                </div>
-            </div>
-            <!-- Agrega más elementos según sea necesario -->
-        </div>
-        <button class="carousel-control-prev custom-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next custom-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    
-    <style>
-        /* Ajuste de tamaño del contenedor del slider */
-        #carouselExampleControls {
-            max-width: 967px; /* Ancho de dos cuadros de 473px más separación */
-            height: 459px; /* Altura aumentada a 459px */
-            margin: 0 auto;
-            position: relative;
+    <script>
+        // Animaciones
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
+        const hint = document.querySelector('.hint');
+
+        envelope.addEventListener('click', () => {
+            envelope.classList.add('open');
+            hint.style.opacity = '0';
+            setTimeout(() => {
+                letter.classList.add('show');
+                createGlitter();
+            }, 800);
+        });
+
+        function createGlitter() {
+            for (let i = 0; i < 25; i++) {
+                const glitter = document.createElement('div');
+                glitter.className = 'glitter';
+                glitter.style.left = Math.random() * 100 + 'vw';
+                glitter.style.top = -30 + 'px';
+                glitter.style.width = (Math.random() * 20 + 10) + 'px';
+                glitter.style.height = glitter.style.width;
+                glitter.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                document.body.appendChild(glitter);
+            }
         }
-    
-        /* Estilos de las imágenes en el slider */
-        .carousel-image {
-            width: 473px;
-            height: 459px; /* Altura ajustada a 459px */
-            object-fit: cover;
-            border-radius: 10px; /* Bordes redondeados opcionales */
-        }
-    
-        /* Espaciado de 21px entre cuadros */
-        .gap-21 {
-            gap: 21px;
-        }
-    
-        /* Posicionamiento de las flechas de navegación fuera del área del slider */
-        .carousel-control-prev.custom-prev,
-        .carousel-control-next.custom-next {
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background-color: rgba(24, 54, 96, 0.5);
-            border-radius: 50%;
-        }
-        
-        .carousel-control-prev.custom-prev {
-            left: -70px; /* Ajustar según la necesidad */
-        }
-    
-        .carousel-control-next.custom-next {
-            right: -70px; /* Ajustar según la necesidad */
-        }
-    </style>
-    
-
-<div class="home_titulo">ULTIMAS NOVEDADES FINANCIERAS</div>
-    
-<div class="novedades-financieras">
-    <img src="./img/ultimas novedades financieras.png" alt="Novedades Financieras" class="novedades-imagen">
-</div>
-
-<div class="home_titulo">CONTACTO RÁPIDO</div>
-
-<div class="llamada_a_la_accion">
-    <h5>¿NECESITAS AYUDA PROFESIONAL?, NO DUDES Y PRESIONA EL BOTÓN PARA CONTACTARTE CON NOSOTROS</h5>
-</div>
-
-<div class="home_presiona">PRESIONA AQUI</div>
-
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-dropdowns">
-            <div class="dropdown">
-                <button class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Servicios
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Subopción 1.1</a></li>
-                    <li><a class="dropdown-item" href="#">Subopción 1.2</a></li>
-                    <li><a class="dropdown-item" href="#">Subopción 1.3</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Redes sociales
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Subopción 2.1</a></li>
-                    <li><a class="dropdown-item" href="#">Subopción 2.2</a></li>
-                    <li><a class="dropdown-item" href="#">Subopción 2.3</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Acerca de nosotros
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Servicios</a></li>
-                    <li><a class="dropdown-item" href="#">Redes sociales</a></li>
-                    <li><a class="dropdown-item" href="#">Acerca de nosotros</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-brand">
-            <img src="./img/marca.png" alt="Marca" height="100" width="100"> <!-- Ajusta el tamaño según sea necesario -->
-        </div>
-    </div>
-</footer>
-
-
-    <script src="./Script/js/bootstrap.bundle.js" ></script>
+    </script>
 </body>
 </html>
